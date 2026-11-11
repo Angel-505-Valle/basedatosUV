@@ -4,4 +4,4 @@ SHOW TABLE:
 CREATE TABLE hogar (
     id INTEGER PRIMARY KEY,
     
-)
+);
