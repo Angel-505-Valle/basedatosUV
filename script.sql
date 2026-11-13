@@ -14,3 +14,86 @@ ALTER TABLE hogar
     -> ADD discapacidadSoN BOOLEAN NOT NULL,
     -> ADD niñezSoN BOOLEAN NOT NULL,
     -> ADD adultoMayorSoN BOOLEAN NOT NULL;
+
+CREATE TABLE familia (
+    -> id INTEGER PRIMARY KEY,
+    -> nombreFamiliar VARCHAR(50) NOT NULL,
+    -> nomCf VARCHAR(50) NOT NULL,
+    -> apedCf VARCHAR(50) NOT NULL,
+    -> numCf VARCHAR(15) NOT NULL);
+
+CREATE TABLE miembros (
+    -> id INTEGER PRIMARY KEY,
+    -> nombreM VARCHAR(50) NOT NULL,
+    -> apellidoM VARCHAR(50) NOT NULL,
+    -> parentesco VARCHAR(50) NOT NULL,
+    -> fechaNacimiento DATE NOT NULL,
+    -> edad TINYINT NULL,
+    -> genero CHAR(1) NOT NULL);
+
+CREATE TABLE necesidad (
+    -> id INTEGER PRIMARY KEY,
+    -> nivelAtencion VARCHAR(15) NOT NULL,
+    -> tipoNecesidad VARCHAR(15) NOT NULL,
+    -> tipoAtencion VARCHAR(15) NOT NULL,
+    -> nivelPrioridad VARCHAR(15) NOT NULL);
+
+CREATE TABLE registro (
+    ->      id INTEGER PRIMARY KEY,
+    ->      nomRegistro VARCHAR(50) NOT NULL,
+    ->      numRegistro VARCHAR(50) NOT NULL,
+    ->      fechaRegistro DATETIME NOT NULL,
+    ->      tipoRegistro VARCHAR(30) NOT NULL);
+
+ CREATE TABLE reporte_hogar (
+    -> id INTEGER PRIMARY KEY,
+    -> nomPersonaContacto VARCHAR(50) NOT NULL,
+    -> numPersonaContacto VARCHAR(50) NOT NULL,
+    -> fechaReporte DATE NOT NULL,
+    -> estadoReporte VARCHAR(15) NOT NULL);
+
+CREATE TABLE zona_ubicacion (
+    -> id INTEGER PRIMARY KEY,
+    -> direccion VARCHAR(100) NULL,
+    -> locacionAlternativa VARCHAR(100) NULL,
+    -> usoZona VARCHAR(50) NOT NULL,
+    -> tipoZona VARCHAR(30) NOT NULL,
+    -> subZonaUno VARCHAR(50) NOT NULL,
+    -> subZonaDos VARCHAR(50) NOT NULL);
+
+CREATE TABLE entrega (
+    -> id INTEGER PRIMARY KEY,
+    -> fechaEntrega DATETIME NOT NULL);
+
+ CREATE TABLE responsable (
+    -> id INTEGER PRIMARY KEY,
+    -> nomResponsable VARCHAR(50) NOT NULL,
+    -> apeResponsable VARCHAR(50) NOT NULL,
+    -> numResponsable VARCHAR(15) NOT NULL,
+    -> docResponsable VARCHAR(20) NOT NULL UNIQUE);
+
+CREATE TABLE tipo_ayuda (
+    -> id INTEGER PRIMARY KEY,
+    -> nivelUrgencia VARCHAR(15) NOT NULL,
+    -> tipoAyuda VARCHAR(15) NOT NULL,
+    -> mediaEstandar VARCHAR(15) NOT NULL);
+
+ CREATE TABLE inventario (
+    -> id INTEGER PRIMARY KEY,
+    -> tipoElemento VARCHAR(50) NOT NULL,
+    -> cantidadElemento INTEGER NOT NULL,
+    -> registroElemento VARCHAR(50) NOT NULL);
+
+ CREATE TABLE donacion (
+    -> id INTEGER PRIMARY KEY,
+    -> tipoDonacion VARCHAR(50) NOT NULL,
+    -> tipoUnidad VARCHAR(20) NOT NULL,
+    -> cantidadUnidad DECIMAL(10,2) NOT NULL,
+    -> fechaDonacion DATETIME NOT NULL);
+
+CREATE TABLE donante (
+    -> id INTEGER PRIMARY KEY,
+    -> nomDonante VARCHAR(50) NOT NULL,
+    -> apeDonante VARCHAR(20) NOT NULL,
+    -> numDonante VARCHAR(20) NOT NULL,
+    -> docDonante VARCHAR(20) NOT NULL UNIQUE);
