@@ -118,3 +118,27 @@ ALTER TABLE reporte_hogar
     -> ADD idNecesidad INTEGER NOT NULL;
 ALTER TABLE reporte_hogar ADD FOREIGN KEY (idNecesidad) REFERENCES necesidad(id);
 
+ALTER TABLE entrega
+    -> ADD idZonaUbicacion INTEGER NOT NULL,
+    -> ADD idTipoAyuda INTEGER NOT NULL,
+    -> ADD idResponsable INTEGER NOT NULL,
+    -> ADD idRegistro INTEGER NOT NULL;
+ALTER TABLE entrega ADD FOREIGN KEY (idZonaUbicacion) REFERENCES zona_ubicacion(id);
+ALTER TABLE entrega ADD FOREIGN KEY (idTipoAyuda) REFERENCES tipo_ayuda(id);
+ALTER TABLE entrega ADD FOREIGN KEY (idResponsable) REFERENCES responsable(id);
+ALTER TABLE entrega ADD FOREIGN KEY (idRegistro) REFERENCES registro(id);
+
+ ALTER TABLE tipo_ayuda
+    -> ADD idNecesidad INTEGER NOT NULL,
+    -> ADD idInventario INTEGER NOT NULL;
+
+ALTER TABLE tipo_ayuda ADD FOREIGN KEY (idNecesidad) REFERENCES necesidad(id);
+ALTER TABLE tipo_ayuda ADD FOREIGN KEY (idInventario) REFERENCES inventario(id);
+
+ALTER TABLE inventario
+    -> ADD idDonacion;
+ ALTER TABLE inventario ADD FOREIGN KEY (idDonacion) REFERENCES donacion(id);
+
+ALTER TABLE donacion
+    -> ADD idDonante INTEGER NOT NULL;
+ALTER TABLE donacion ADD FOREIGN KEY (idDonante) REFERENCES donante(id);
