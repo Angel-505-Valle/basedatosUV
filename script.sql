@@ -97,3 +97,24 @@ CREATE TABLE donante (
     -> apeDonante VARCHAR(20) NOT NULL,
     -> numDonante VARCHAR(20) NOT NULL,
     -> docDonante VARCHAR(20) NOT NULL UNIQUE);
+
+ALTER TABLE miembros
+    -> ADD idFamilia INTEGER NOT NULL;
+ ALTER TABLE miembros ADD FOREIGN KEY (idFamilia) REFERENCES familia(id);
+
+ALTER TABLE registro
+    -> ADD idResponsable INTEGER NOT NULL,
+    -> ADD idReporteHogar INTEGER NOT NULL;
+
+ALTER TABLE registro ADD FOREIGN KEY (idResponsable) REFERENCES responsable(id);
+ALTER TABLE registro ADD FOREIGN KEY (idReporteHogar) REFERENCES reporte_hogar(id);
+
+ALTER TABLE reporte_hogar
+    -> ADD idHogar INTEGER NOT NULL,
+    -> ADD idZonaUbicacion INTEGER NOT NULL;
+ALTER TABLE reporte_hogar ADD FOREIGN KEY (idHogar) REFERENCES hogar(id);
+ALTER TABLE reporte_hogar ADD FOREIGN KEY (idZonaUbicacion) REFERENCES zona_ubicacion(id);
+ALTER TABLE reporte_hogar
+    -> ADD idNecesidad INTEGER NOT NULL;
+ALTER TABLE reporte_hogar ADD FOREIGN KEY (idNecesidad) REFERENCES necesidad(id);
+
